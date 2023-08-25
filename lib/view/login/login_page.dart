@@ -62,7 +62,10 @@ class _LoginPageState extends State<LoginPage> {
           email: email.text, password: password.text);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (ctx) => HomePage(),
+          builder: (ctx) => HomePage({
+            'email': email.text,
+            'password': password.text,
+          }),
         ),
       );
     } on FirebaseAuthException catch (e) {

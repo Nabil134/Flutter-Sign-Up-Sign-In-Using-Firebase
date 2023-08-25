@@ -3,9 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:intern_task1/utils/utils.dart';
 import 'package:intern_task1/view/login/login_page.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class HomePage extends StatefulWidget {
+  Map details;
+  HomePage(this.details);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +43,30 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: Text('Home Page'),
+            child: Text(
+              'User Info',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 34,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Text(
+            'Email: ${widget.details['email']}',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 34,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            'Password: ${widget.details['password']}',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 34,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),
